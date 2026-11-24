@@ -1,0 +1,132 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-geist), var(--font-telugu), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+}
+
+:root {
+  color-scheme: light;
+  --background: oklch(0.982 0.008 85);
+  --foreground: oklch(0.22 0.02 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.02 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.02 260);
+  --primary: oklch(0.56 0.17 42);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.95 0.03 70);
+  --secondary-foreground: oklch(0.32 0.08 45);
+  --muted: oklch(0.955 0.008 85);
+  --muted-foreground: oklch(0.48 0.015 260);
+  --accent: oklch(0.95 0.03 70);
+  --accent-foreground: oklch(0.32 0.08 45);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.9 0.012 85);
+  --input: oklch(0.9 0.012 85);
+  --ring: oklch(0.56 0.17 42);
+  --ink: oklch(0.22 0.02 260);
+  --ink-foreground: oklch(0.96 0.01 85);
+  --radius: 0.75rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+/* Long-form guide typography, applied to rendered Markdown. */
+@layer components {
+  .guide-body {
+    @apply text-[1.0625rem] leading-relaxed text-foreground;
+  }
+  .guide-body > * + * {
+    @apply mt-5;
+  }
+  .guide-body h2 {
+    @apply mt-14 mb-2 text-2xl font-semibold tracking-tight text-balance;
+  }
+  .guide-body h3 {
+    @apply mt-10 text-lg font-semibold tracking-tight text-balance;
+  }
+  .guide-body p {
+    @apply text-pretty;
+  }
+  .guide-body a {
+    @apply font-medium text-primary underline decoration-primary/30 underline-offset-4 hover:decoration-primary;
+  }
+  .guide-body ul,
+  .guide-body ol {
+    @apply flex flex-col gap-2 pl-6;
+  }
+  .guide-body ul {
+    @apply list-disc marker:text-primary;
+  }
+  .guide-body ol {
+    @apply list-decimal marker:text-muted-foreground;
+  }
+  .guide-body strong {
+    @apply font-semibold;
+  }
+  .guide-body blockquote {
+    @apply rounded-xl border border-secondary-foreground/15 bg-secondary px-5 py-4 text-secondary-foreground;
+  }
+  .guide-body blockquote > * + * {
+    @apply mt-2;
+  }
+  .guide-body img {
+    @apply w-full rounded-xl border bg-card;
+  }
+  .guide-body hr {
+    @apply my-12 border-border;
+  }
+  .guide-body :not(pre) > code {
+    @apply rounded-md bg-muted px-1.5 py-0.5 font-mono text-[0.9em];
+  }
+  .guide-body table {
+    @apply w-full border-collapse text-sm;
+  }
+  .guide-body th,
+  .guide-body td {
+    @apply border px-3 py-2 text-left align-top;
+  }
+  .guide-body th {
+    @apply bg-muted font-semibold;
+  }
+}
